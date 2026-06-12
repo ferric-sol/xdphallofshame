@@ -18,7 +18,7 @@ const body = Sora({
 export const metadata: Metadata = {
   title: "Agave Wall of Shame",
   description:
-    "Live Agave mainnet metrics and XDP wall-of-shame boards plus a preserved legacy testnet archive.",
+    "Agave validator watchlist for metrics and XDP offenders.",
 };
 
 export default function RootLayout({

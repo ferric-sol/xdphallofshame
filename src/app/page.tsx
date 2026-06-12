@@ -368,7 +368,7 @@ function renderMainnetBoard(board: BoardData) {
             <span
               className={`inline-flex rounded-full border px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.18em] ${theme.badge}`}
             >
-              mainnet live board
+              mainnet
             </span>
             <h2
               className={`font-display mt-4 text-3xl font-black tracking-[-0.05em] sm:text-4xl ${theme.headline}`}
@@ -425,8 +425,8 @@ function renderMainnetBoard(board: BoardData) {
               validator ledger
             </p>
             <p className="mt-2 text-sm leading-6 text-[#c9bea8]">
-              Names are resolved from a mainnet `solana validator-info` snapshot.
-              Rows without a published name fall back to the identity pubkey.
+              Published validator name when available. Identity pubkey
+              otherwise.
             </p>
           </div>
 
@@ -532,13 +532,11 @@ function renderTestnetArchive(
               operator notes
             </p>
             <h2 className="font-display mt-4 text-3xl font-black tracking-[-0.05em] sm:text-4xl">
-              Legacy testnet archive preserved intact
+              Historical testnet list
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-[#c9bea8] sm:text-base">
-              This tab keeps the original combined board and its original
-              Discord source. It is not split into metrics and XDP categories
-              and should be treated as accurate before
-              {` ${LEGACY_TESTNET_CUTOFF_DATE}`}.
+              Historical validator list from Discord. Treat it as accurate
+              before {LEGACY_TESTNET_CUTOFF_DATE}.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
@@ -577,8 +575,7 @@ function renderTestnetArchive(
               {featured?.identityPubkey || "No validators available."}
             </p>
             <p className="mt-6 text-sm leading-6 text-[#c9bea8]">
-              Names here are whatever was preserved in the original CSV, not a
-              fresh mainnet `validator-info` lookup.
+              Some entries only have a pubkey and no published name.
             </p>
           </div>
         </div>
@@ -595,7 +592,7 @@ function renderTestnetArchive(
             </h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-[#c9bea8]">
-            Combined legacy list preserved as testnet archive data.
+            Historical validator list from Discord.
           </p>
         </div>
 
@@ -705,21 +702,20 @@ export default async function Home() {
             <span className="h-3 w-3 rounded-full bg-[#d6ff3f] shadow-[0_0_28px_rgba(214,255,63,0.85)]" />
             Solana validator accountability registry
           </div>
-          <span>Mainnet split boards plus legacy testnet archive</span>
+          <span>XDP and metrics accountability</span>
         </nav>
 
         <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
           <div>
             <p className="mb-5 inline-flex rounded-full border border-[#d6ff3f]/40 bg-[#d6ff3f]/10 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#d6ff3f] sm:text-xs sm:tracking-[0.24em]">
-              live mainnet offenders plus archived testnet list
+              Validator accountability tribunal
             </p>
             <h1 className="font-display max-w-5xl text-[clamp(3.35rem,17vw,8.6rem)] font-black leading-[0.82] tracking-[-0.08em] text-[#f3ead8]">
               Agave Wall of Shame
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#c9bea8] sm:mt-7 sm:text-xl sm:leading-8">
-              Mainnet now has separate wall-of-shame boards for validators not
-              reporting metrics and validators advertising xdp=false. The
-              original combined board remains available under the testnet tab.
+              Hall of shame for validators on Solana mainnet not reporting
+              metrics or advertising xdp=false, holding Solana back.
             </p>
           </div>
 
@@ -742,7 +738,7 @@ export default async function Home() {
                 {heroCaseDeck.currentDefendant?.issueLabel || "Live board"}
               </span>
               <span className="rounded-full border border-[#f3ead8]/12 px-4 py-3 text-[#c9bea8]">
-                {heroCaseDeck.currentDefendant?.boardTitle || "Current board"}
+                {heroCaseDeck.currentDefendant?.boardTitle || "Current case"}
               </span>
             </div>
           </div>
@@ -789,10 +785,9 @@ export default async function Home() {
                       Get off the board
                     </h2>
                     <p className="mt-4 max-w-2xl text-sm leading-6 text-[#c9bea8] sm:text-base">
-                      These are live mainnet identity pubkeys from the latest
-                      gist feeds. Names are resolved from a checked-in
-                      `solana validator-info` snapshot so deployments do not
-                      depend on runtime RPC access.
+                      Report metrics. Enable XDP. Publish validator info if you
+                      want your validator name attached to your identity instead
+                      of a raw pubkey.
                     </p>
 
                     <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
@@ -848,8 +843,8 @@ export default async function Home() {
       </section>
 
       <footer className="relative mx-auto mt-6 flex max-w-7xl flex-col gap-3 px-2 text-xs uppercase tracking-[0.22em] text-[#918b7d] sm:flex-row sm:justify-between">
-        <span>live mainnet gist feeds plus validator-info names</span>
-        <span>testnet archive preserved behind its own tab</span>
+        <span>Solana validator accountability registry</span>
+        <span>Enable XDP, report metrics, move the chain forward</span>
       </footer>
     </main>
   );
