@@ -16,9 +16,9 @@ const body = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "XDP Hall of Shame",
+  title: "Agave Wall of Shame",
   description:
-    "A hall of shame for Solana testnet validators without XDP or metrics reporting.",
+    "Live Agave mainnet metrics and XDP wall-of-shame boards plus a preserved legacy testnet archive.",
 };
 
 export default function RootLayout({
