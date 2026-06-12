@@ -113,6 +113,13 @@ function pickNamedOrAny<T extends { name: string | null }>(items: T[]) {
   return namedItems.length ? namedItems : items;
 }
 
+function groupNamedValidatorsFirst<T extends { name: string | null }>(items: T[]) {
+  const namedItems = items.filter((item) => item.name);
+  const unnamedItems = items.filter((item) => !item.name);
+
+  return [...shuffle(namedItems), ...shuffle(unnamedItems)];
+}
+
 function parseCsvLine(line: string) {
   const cells: string[] = [];
   let cell = "";
@@ -248,10 +255,12 @@ async function fetchBoard(
       ? await fetchText(file.raw_url)
       : file.content;
 
-  const validators = parsePubkeyList(content).map((identityPubkey) => ({
-    identityPubkey,
-    name: normalizeName(validatorNames[identityPubkey]),
-  }));
+  const validators = groupNamedValidatorsFirst(
+    parsePubkeyList(content).map((identityPubkey) => ({
+      identityPubkey,
+      name: normalizeName(validatorNames[identityPubkey]),
+    })),
+  );
 
   const namedCount = validators.filter((validator) => validator.name).length;
 
