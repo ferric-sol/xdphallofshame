@@ -275,8 +275,6 @@ function boardTheme(key: BoardDefinition["key"]) {
       badge:
         "border-[#d6ff3f]/35 bg-[#d6ff3f]/10 text-[#d6ff3f]",
       cardBorder: "border-[#d6ff3f]/18",
-      spotlightBorder: "border-[#d6ff3f]/30",
-      spotlightBg: "bg-[#13160d]",
       headline: "text-[#d6ff3f]",
       statBg: "bg-[#d6ff3f]",
       statText: "text-[#17140f]",
@@ -290,8 +288,6 @@ function boardTheme(key: BoardDefinition["key"]) {
     badge:
       "border-[#ff6a2a]/35 bg-[#ff6a2a]/10 text-[#ffb188]",
     cardBorder: "border-[#ff6a2a]/18",
-    spotlightBorder: "border-[#ff6a2a]/30",
-    spotlightBg: "bg-[#19110d]",
     headline: "text-[#ffb188]",
     statBg: "bg-[#ff6a2a]",
     statText: "text-[#1a110c]",
@@ -401,49 +397,28 @@ function renderMainnetBoard(board: BoardData) {
           <span>Named {board.namedCount}</span>
           <span>Identity only {board.anonymousCount}</span>
         </div>
+
+        <div className="mt-5 flex flex-wrap gap-3 text-sm">
+          <a
+            href={board.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center rounded-full bg-[#f3ead8] px-4 py-3 font-bold text-[#17140f] transition hover:bg-[#d6ff3f]"
+          >
+            Open gist
+          </a>
+          <a
+            href={board.rawUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center rounded-full border border-[#f3ead8]/15 px-4 py-3 font-bold text-[#f3ead8] transition hover:border-[#d6ff3f]/40 hover:text-[#d6ff3f]"
+          >
+            Raw list
+          </a>
+        </div>
       </div>
 
-      <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[18rem_minmax(0,1fr)]">
-        <article
-          className={`rounded-[1.35rem] border ${theme.spotlightBorder} ${theme.spotlightBg} p-5`}
-        >
-          <p className="text-sm uppercase tracking-[0.24em] text-[#918b7d]">
-            spotlight offender
-          </p>
-          <h3
-            className={`font-display mt-5 text-3xl font-black leading-none tracking-[-0.05em] ${theme.headline}`}
-          >
-            {board.featured?.name || "Identity only"}
-          </h3>
-          <p className="mt-4 break-all font-mono text-sm leading-6 text-[#f3ead8]">
-            {board.featured?.identityPubkey || "No validators currently listed."}
-          </p>
-          <span
-            className={`mt-6 inline-flex rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] ${theme.pill}`}
-          >
-            {board.issueLabel}
-          </span>
-
-          <div className="mt-6 flex flex-wrap gap-3 text-sm">
-            <a
-              href={board.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-full bg-[#f3ead8] px-4 py-3 font-bold text-[#17140f] transition hover:bg-[#d6ff3f]"
-            >
-              Open gist
-            </a>
-            <a
-              href={board.rawUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-full border border-[#f3ead8]/15 px-4 py-3 font-bold text-[#f3ead8] transition hover:border-[#d6ff3f]/40 hover:text-[#d6ff3f]"
-            >
-              Raw list
-            </a>
-          </div>
-        </article>
-
+      <div className="p-5 sm:p-6">
         <div className="overflow-hidden rounded-[1.35rem] border border-[#f3ead8]/12 bg-[#120f0c]">
           <div className="border-b border-[#f3ead8]/10 p-4">
             <p className="text-sm uppercase tracking-[0.24em] text-[#918b7d]">
@@ -479,7 +454,7 @@ function renderMainnetBoard(board: BoardData) {
           </div>
 
           <div className="hidden max-h-[580px] overflow-auto md:block">
-            <table className="w-full min-w-[980px] border-collapse text-left text-sm">
+            <table className="w-full min-w-[1120px] border-collapse text-left text-sm">
               <thead className="sticky top-0 z-10 bg-[#17120d] text-xs uppercase tracking-[0.22em] text-[#918b7d]">
                 <tr>
                   <th className="border-b border-[#f3ead8]/10 px-5 py-4 font-bold">
